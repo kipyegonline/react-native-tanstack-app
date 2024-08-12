@@ -30,7 +30,7 @@ export default function Welcome() {
   );
 }
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: 20, backgroundColor: "rgba(0,0,0,.9)" },
+  container: { flex: 1, paddingTop: 20, backgroundColor: "rgba(0,0,0,.9)",justifyContent:"center",alignItems:"center" },
   welcome: {
     color: "white",
     fontWeight: "700",
