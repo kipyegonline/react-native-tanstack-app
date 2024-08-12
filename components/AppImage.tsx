@@ -17,7 +17,12 @@ export default function AppImage() {
   };
   const alertHim = () => {
     Alert.alert("Action", "Confirm Alert", [
-      { text: "Accept", onPress: () => {} },
+      {
+        text: "Accept",
+        onPress: () => {
+          alert("Accepted...");
+        },
+      },
       { text: "Decline", onPress: () => {} },
     ]);
   };
