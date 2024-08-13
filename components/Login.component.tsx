@@ -6,8 +6,14 @@ import {
   TextInput,
 } from "react-native";
 import React from "react";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParams } from "../Navigation.component";
+type Props = NativeStackScreenProps<RootStackParams, "Login">;
 
-export default function LoginComponent() {
+export default function LoginComponent({ navigation }: Props) {
+  const handleLogin = () => {
+    navigation.navigate("Posts");
+  };
   return (
     <View style={styles.container}>
       <View
@@ -22,15 +28,31 @@ export default function LoginComponent() {
 
       <View style={styles.emailContainer}>
         <Text style={styles.inputLabel}>Email</Text>
-        <TextInput keyboardType="email-address" style={styles.textInput} />
+        <TextInput
+          keyboardType="email-address"
+          style={styles.textInput}
+          placeholder="Enter email/username"
+        />
       </View>
       <View style={styles.passwordContainer}>
         <Text style={styles.inputLabel}>Password</Text>
-        <TextInput secureTextEntry style={styles.textInput} />
+        <TextInput
+          secureTextEntry
+          style={styles.textInput}
+          placeholder="Enter password"
+        />
       </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn} onPress={handleLogin}>
         <Text style={styles.logintext}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("SignUp");
+        }}
+        style={styles.signupLink}
+      >
+        <Text style={{ color: "blue" }}>Create account</Text>
       </TouchableOpacity>
     </View>
   );
@@ -65,4 +87,5 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   logintext: { color: "#fff", textAlign: "center" },
+  signupLink: { marginTop: 10 },
 });
